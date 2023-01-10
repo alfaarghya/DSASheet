@@ -51,6 +51,6 @@ public class Array03_MaximumSumSubArray {
         int nums1[] = {-2,1,-3,4,-1,2,1,-5,4};
         int nums2[] = {1};
         int nums3[] = {5,4,-1,7,8};
-        System.out.println(maxSumOfSubArray(nums3));
+        System.out.println("Maximum sum SubArray -> "+maxSumOfSubArray(nums3));
     }
 }
