@@ -70,6 +70,94 @@ class LinkedList{
         tail = newNode;
     }
                         //---------//
+
+        //----add a new node with Index----//
+    public void addWithIndex(int data, int index){
+            //corner case -> when index is greater than size of LinkedList
+        if(index > size){
+            System.out.println("unable to put the node.......Cause index is greater than size");
+            return;
+        }
+        if(index == 0){
+            addFirst(data);
+            return;
+        }
+            //step 1 -> create a new Node & tracking Node
+        Node newNode = new Node(data);
+        Node prev = head;   //track the previous index node
+        int i = 0;
+            //step 2 -> a loop will run until found the previous index Node
+        while(i < index-1){
+            prev = prev.next;   //provides previous index Node of Index
+            i++;
+        }
+            //step 3 -> now newNode point to next index Node
+        newNode.next = prev.next;
+            //step 4 -> previous index Node points to newNode
+        prev.next = newNode;
+
+    }
+                //----------//
+        //----remove first node of LinkedList----//
+    public int removeFirst(){
+            //corner case 1 -> when linkedList is empty
+        if(head == null){   //if(size == 0) -> we can also write this when we know the size
+            System.out.println("No Node is there for remove");
+            return Integer.MIN_VALUE;
+        }
+            //corner case 2 -> when there is single Node
+        if(head.next == null){  //if(size == 1) -> we can also write this when we know size
+            int removeValue = head.data;
+            head = tail = null;
+            size = 0; //no node is there
+            return removeValue;
+        }
+            //step 1 -> create a temp Node and point it to the first Node
+        Node temp = head;
+        int removeValue = temp.data;
+            //step 2 -> head point to next node of head
+        head = temp.next;
+        size--;
+        return removeValue; //return the deleted data
+    }
+                    //----------//
+
+        //----remove last node of LinkedList----//
+    public int removeLast(){
+            //corner case 1-> when LinkedList is empty
+        if(head == null){   //if(size == 0) -> we can also write this when we know size
+            System.out.println("No Node is there for remove");
+            return Integer.MIN_VALUE;
+        }
+            //corner case 2-> when LinkedList have a single Node
+        if(head.next == null){  //if(size == 1) -> we can also write this when we know size
+            int removeValue = head.data;
+            head = tail = null;
+            return removeValue;
+        }
+        int removeValue = tail.data;
+            //step 1 -> point to the first Node
+        Node prev = head;
+        Node temp = head.next.next;
+            //step 2 -> run a loop and reach to the previous Node last node
+        while(temp != null){
+            prev = prev.next; // provide previous node of last node
+            temp = temp.next;
+        }
+        /*    //step 2 -> run a loop and reach to the previous Node last node(we can use this when we know the size)
+        for(int i = 0; i < size-2; i++){
+            prev = prev.next;
+        }*/
+            //step 3 -> prev node point to null
+        prev.next = null;
+            //step 4 -> now tail will point to prev node
+        tail = prev;
+        size--;
+        return removeValue;
+    }
+                    //---------//
+
+
 }
 public class DS01_LinkedList{
     public static void main(String args[]){
@@ -77,6 +165,10 @@ public class DS01_LinkedList{
         ll.addLast(5);
         ll.addLast(4);
         ll.addFirst(0);
+        // ll.removeFirst();
+        // ll.removeLast();
+        // System.out.println(ll.removeLast());
+        ll.addWithIndex(3, 4);
 
         ll.print();
     }
