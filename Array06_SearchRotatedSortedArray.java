@@ -27,37 +27,44 @@ Constraints:
  */
 
 public class Array06_SearchRotatedSortedArray {
-            //ita
+            //iterative method
     public static int searchTarget(int arr[], int target){
         int startIndex = 0;
         int endIndex = arr.length-1;
-        
-        while(startIndex <= endIndex){
-            int midIndex = startIndex+(endIndex - startIndex)/2;
 
+        while(startIndex <= endIndex){  //when startIndex is greater than endIndex our loop will stop running
+                //step 1 -> find out mid 
+            int midIndex = startIndex+(endIndex - startIndex)/2;
+                //step 2 -> when target at midIndex
             if(arr[midIndex] == target){
                 return midIndex;
             }
-
+                //step 3
+                    //Case 1 -> mid lies on Line1
             if(arr[startIndex] <= arr[midIndex]){
+                     //when target lies left side of Line1  
                 if(arr[startIndex] <= target && target <= arr[midIndex]){
                     endIndex  = midIndex-1;
                 }
+                     //when target lies right side of Line1(that's mean half of Line1 and whole Line2)
                 else{
                     startIndex = midIndex+1;
                 }
             }
+                    //case 2 -> mid lies on Line2
             else{
+                    //when target lies right side of Line2
                 if(arr[midIndex] <= target && target <= arr[endIndex]){
                     startIndex = midIndex+1;
                 }
+                    //when target lies left side of Line2(that's mean half of Line2 and whoLe Line1)
                 else{
                     endIndex = midIndex+1;
                 }
             }
         }
         
-        return -1;
+        return -1;  //when target is not there in array
     }
             //recursive method
     public static int searchTarget(int arr[], int target, int startIndex, int endIndex){    //TC -> O(log n)
