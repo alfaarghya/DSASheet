@@ -27,9 +27,40 @@ Constraints:
  */
 
 public class Array06_SearchRotatedSortedArray {
+            //ita
+    public static int searchTarget(int arr[], int target){
+        int startIndex = 0;
+        int endIndex = arr.length-1;
+        
+        while(startIndex <= endIndex){
+            int midIndex = startIndex+(endIndex - startIndex)/2;
 
+            if(arr[midIndex] == target){
+                return midIndex;
+            }
+
+            if(arr[startIndex] <= arr[midIndex]){
+                if(arr[startIndex] <= target && target <= arr[midIndex]){
+                    endIndex  = midIndex-1;
+                }
+                else{
+                    startIndex = midIndex+1;
+                }
+            }
+            else{
+                if(arr[midIndex] <= target && target <= arr[endIndex]){
+                    startIndex = midIndex+1;
+                }
+                else{
+                    endIndex = midIndex+1;
+                }
+            }
+        }
+        
+        return -1;
+    }
             //recursive method
-    public static int searchTarget(int arr[], int target, int startIndex, int endIndex){
+    public static int searchTarget(int arr[], int target, int startIndex, int endIndex){    //TC -> O(log n)
             //base case
         if(startIndex > endIndex){
             return -1;  //when target is not there in array
@@ -67,6 +98,12 @@ public class Array06_SearchRotatedSortedArray {
 
     public static void main(String args[]) {
         int nums[] = {4,5,6,7,0,1,2};
-        System.out.println(searchTarget(nums, 3, 0, nums.length-1));
+        int result = searchTarget(nums, 6);
+        if(result == -1){
+            System.out.println("Your targe is not in the array");
+        }
+        else{
+            System.out.println("target found at index "+result);
+        }
     }
 }
