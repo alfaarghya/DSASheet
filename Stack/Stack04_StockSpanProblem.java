@@ -1,7 +1,7 @@
 import java.util.Stack;
 public class Stack04_StockSpanProblem {
 
-    public static void span(int[] stock, int[] span){
+    public static void span(int[] stock, int[] span){   //TC -> O(n)
         Stack<Integer> stk = new Stack<>();
             //first element of span is always 1........because we have no value before that element
         span[0] = 1;

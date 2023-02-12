@@ -2,7 +2,7 @@ import java.util.Stack;
 
 public class Stack05_NextGreater{
 
-    public static void nextGreater(int[] arr){
+    public static void nextGreater(int[] arr){  //TC -> O(n)
         Stack<Integer> stk = new Stack<>();
         int sizeOfArr = arr.length;
         int[] nextGreaterElement = new int[sizeOfArr];
