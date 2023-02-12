@@ -27,7 +27,7 @@ public class Stack06_ValidParentheses {
                 if((stk.peek() == '(' && ch == ')') || (stk.peek() == '{' && ch == '}') || (stk.peek() == '[' && ch == ']') ){
                     stk.pop();
                 }
-                    //when brackets does not make any pair -> "{[]([)}"
+                    //when 1 bracket does not make pair -> "{[]([)}"
                 else{
                     return false;
                 }
