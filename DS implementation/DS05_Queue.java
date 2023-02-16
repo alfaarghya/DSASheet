@@ -74,6 +74,7 @@ class QueueWithLinkedList{
     public static Node tail;
     public static int size;
 
+        /*---- add a data in queue ----*/
     void add(int data){
             //Step 1 -> create a new Node
         Node newNode = new Node(data);
@@ -89,7 +90,9 @@ class QueueWithLinkedList{
         tail = newNode;
         size++;
     }
+                /*---- ----*/
 
+        /*---- remove a data from Queue ----*/
     int remove(){
             //corner case 1 -> when LinkedList is empty
         if(head == null){
@@ -112,7 +115,9 @@ class QueueWithLinkedList{
         size--;
         return front.data;
     }
+                /*---- ----*/
 
+        /*---- to see first element ----*/
     int peek(){
         if(head == null){
             System.out.println("Queue is empty.........");
@@ -121,7 +126,9 @@ class QueueWithLinkedList{
 
         return head.data;
     }
-
+                /*---- ----*/
+        
+        /*---- normal print in linked list ----*/
     void printLL(){
         if(head == null){
             System.out.println("Queue is empty..........");
@@ -135,7 +142,7 @@ class QueueWithLinkedList{
         System.out.print("null");
         System.out.println();
     }
-
+                    /*---- ----*/
 }
 
 public class DS05_Queue {
