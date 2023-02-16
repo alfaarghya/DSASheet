@@ -58,6 +58,86 @@ class QueueWithArray{
                         /*---- ----*/
 }
 
+class QueueWithLinkedList{
+
+    class Node{
+        int data;
+        Node next;
+
+        Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static Node head;
+    public static Node tail;
+    public static int size;
+
+    void add(int data){
+            //Step 1 -> create a new Node
+        Node newNode = new Node(data);
+            //corner case -> when linkedList is empty
+        if(head == null){
+            head = tail = newNode;
+            size++;
+            return;
+        }
+            //Step 2 -> tail point to the new node
+        tail.next = newNode;
+            //Step 3 -> newNode become tail
+        tail = newNode;
+        size++;
+    }
+
+    int remove(){
+            //corner case 1 -> when LinkedList is empty
+        if(head == null){
+            System.out.println("Queue is empty.........");
+            return Integer.MIN_VALUE;
+        }
+            //corner case 2 -> when 1 node in linkedList
+        if(head.next == null){
+            Node temp = head;
+            head = tail = null;
+            size--;
+            return temp.data;
+        }
+            //step 1 -> create a node which point to the first Node
+        Node front = head;
+            //step 2 -> now head come to the 2nd node
+        head = head.next;
+            //step 3 -> disconnect the connection of the first Node with the LinkedList
+        front.next = null;
+        size--;
+        return front.data;
+    }
+
+    int peek(){
+        if(head == null){
+            System.out.println("Queue is empty.........");
+            return Integer.MIN_VALUE;
+        }
+
+        return head.data;
+    }
+
+    void printLL(){
+        if(head == null){
+            System.out.println("Queue is empty..........");
+            return;
+        }
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data+" -> ");
+            temp = temp.next;
+        }
+        System.out.print("null");
+        System.out.println();
+    }
+
+}
+
 public class DS05_Queue {
     public static void main(String[] args) {
         QueueWithArray qa = new QueueWithArray(10);
@@ -72,5 +152,17 @@ public class DS05_Queue {
             System.out.println(qa.peek());
             qa.remove();
         }
+        System.out.println("--------------------------------");
+
+        QueueWithLinkedList qll = new QueueWithLinkedList();
+        qll.add(0);
+        qll.add(1);
+        qll.add(2);
+        qll.add(3);
+        System.out.println(qll.size);
+        qll.printLL();
+        qll.remove();
+        System.out.println(qll.size);
+        qll.printLL();
     }
 }
