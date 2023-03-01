@@ -26,7 +26,7 @@ public class GA01_ActivitySelection{
                                     /* ---- ---- */
 
         /* ---- When we need to sort activities according to the end time ---- */
-    public static int maximumActivity_withSorting(int[] start, int[] end){  //TC -> O(n )
+    public static int maximumActivity_withSorting(int[] start, int[] end){  //TC -> O(nlog(n))
 
         int[][] activities = new int[start.length][3];  //it is a 2D array with n rows and 3 columns 
         for(int i = 0; i < start.length; i++){
