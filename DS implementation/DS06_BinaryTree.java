@@ -136,6 +136,49 @@ class BinaryTree{
         return lSum+rSum+root.data;
     }
 
+    /* public int diameter(Node root){ //TC -> O(n^2)
+            //base case
+        if(root == null){
+            return 0;
+        }
+        int lDiameter = diameter(root.left);    //left subtree diameter
+        int rDiameter = diameter(root.right);   //right subtree diameter
+
+        int lHeight = heightOfTree(root.left);  //left sub tree diameter
+        int rHeight = heightOfTree(root.right); //right sub tree diameter
+
+        int selfDiameter = lHeight + rHeight + 1;
+
+        return Math.max(selfDiameter, Math.max(lDiameter,rDiameter));
+
+    }*/
+
+    static class Info{  //creating a class to store information of diameter & height to calculate Diameter of tree
+        int diam;   //diameter
+        int ht;      //height
+
+        Info(int diam, int ht){ //constructor
+            this.diam = diam;
+            this.ht = ht;
+        }
+    }
+
+    public Info diameter(Node root){    //TC -> O(n)
+            //base case
+        if(root == null){
+            return new Info(0, 0);  //returning height = 0 and diameter = 0
+        }
+
+        Info lInfo = diameter(root.left);   //left side subtree Info
+        Info rInfo = diameter(root.right); // right side subtree Info
+
+        int diam = Math.max(lInfo.ht+rInfo.ht+1, Math.max(lInfo.diam, rInfo.diam)); 
+        int height = Math.max(lInfo.ht, rInfo.ht)+1;
+
+        return new Info(diam, height);
+    }
+
+
 }
 
 public class DS06_BinaryTree {
@@ -174,6 +217,8 @@ public class DS06_BinaryTree {
         System.out.println("Total number of Nodes in Tree >> "+ bt.countOfNodes(root));
         System.out.println("------------------------------------------");
         System.out.println("Total sum of Nodes in Tree >> "+ bt.sumOfNodes(root));
+        System.out.println("------------------------------------------");
+        System.out.println("Diameter of Tree >> "+ bt.diameter(root).diam);
         System.out.println("------------------------------------------");
     }
 }
