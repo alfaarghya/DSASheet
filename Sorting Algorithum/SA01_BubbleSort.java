@@ -12,7 +12,7 @@ class BubbleSort{
     }
             /*---- ----*/
 
-            /*---- Ascending Order Sorting ----*/
+            /*---- Ascending Order Sorting(only this part is required to understand Bubble Sort) ----*/
     public void bubbleSortAscendingOrder(){ //TC -> O(n^2)
         int n = arr.length;
         for(int i = 0; i < n-1; i++){   //run a loop >> 0 to 2nd last element
