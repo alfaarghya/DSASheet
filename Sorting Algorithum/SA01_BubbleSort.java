@@ -18,7 +18,7 @@ class BubbleSort{
         for(int i = 0; i < n-1; i++){   //run a loop >> 0 to 2nd last element
             int swap = 0;   //it tracks how many swapping done
             for(int j = 0; j < n-1-i; j++){ //run a loop >> 0 to n-1-i 
-                if(arr[j] > arr[j+1]){  //when current[j] element is greater than it's next element[j+1] push that after the element[j+1]......it means if we have 4,3,2,1 >> we need to push 4 after 3
+                if(arr[j] > arr[j+1]){  //when current element[j] is greater than it's next element[j+1] push that after the element[j+1]......it means if we have 4,3,2,1 >> we need to push 4 after 3
                     //-- swapping --//
                     int temp = arr[j];
                     arr[j] = arr[j+1];
@@ -41,7 +41,7 @@ class BubbleSort{
         for(int i = 0; i < n-1; i++){   //run a loop >> 0 to 2nd last element
             int swap = 0;   //it tracks how many swapping done
             for(int j = 0; j < n-1-i; j++){ //run a loop >> 0 to n-1-i 
-                if(arr[j] < arr[j+1]){  //when current[j] element is less than it's next element[j+1] push that after the element[j+1]......it means if we have 1,2,3,4 >> we need to push 1 after 2
+                if(arr[j] < arr[j+1]){  //when current element[j] is less than it's next element[j+1] push that after the element[j+1]......it means if we have 1,2,3,4 >> we need to push 1 after 2
                     //-- swapping --//
                     int temp = arr[j];
                     arr[j] = arr[j+1];
