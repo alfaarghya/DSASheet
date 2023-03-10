@@ -16,31 +16,34 @@ public class BT01_SubtreeOfTree{
         if(root == null){
             return false;
         }
+            //step 1 -> check for root = sub root
         if(root.data == subRoot.data){
             if(isIdentical(root, subRoot)){
                 return true;
             }
         }
-
+            //step 2 -> check for subRoot in left side of main tree then check right side of main tree
         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
     }
 
+        //some reason for identical or non-identical
     public static boolean isIdentical(Node root, Node subRoot){
+            //base case
         if(root == null && subRoot == null){
             return true;
-        }
+        }   //some reason for non-identical
         else if(root == null || subRoot == null || root.data != subRoot.data){
             return false;
         }
 
-        if(!isIdentical(root.left, subRoot.left)){
+        if(!isIdentical(root.left, subRoot.left)){  //tree's left side and subTree's left side are not same
             return false;
         }
-        if(!isIdentical(root.right, subRoot.right)){
+        if(!isIdentical(root.right, subRoot.right)){    //tree's right side and subTree's right side are not same
             return false;
         }
 
-        return true;
+        return true;    //if all upper non-identical logic fail then tree and subtree are identical
     }
 
     public static void main(String[] args) {
