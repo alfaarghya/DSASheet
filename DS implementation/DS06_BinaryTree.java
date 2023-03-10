@@ -72,27 +72,27 @@ class BinaryTree{
         q.add(root);
         q.add(null);//this is for next line
 
-            //step 2 -> run a loop until binary tree empty
+            //step 2 -> run a loop until queue empty
         while(!q.isEmpty()){
-                //step 3 -> remove the element from the queue
+                //step 3 -> remove the element from the queue and print it
             Node currentNode = q.remove();
-            if(currentNode == null){
-                System.out.println();   //if it is null that's mean we have to provide a next line
+            if(currentNode == null){    //if it is null that's mean we have to provide a next line
+                System.out.println();   
                 if(q.isEmpty()){    //when queue is empty stop the loop
                     break;
                 }
-                else{
+                else{   //if queue have data add a null to print next line in next level
                     q.add(null);
                 }
             }
-            else{
-                System.out.print(currentNode.data+" "); //when front of queue is not null print the value
+            else{    //when front of queue is not null print the value
+                System.out.print(currentNode.data+" ");
                     //go to the left subtree
-                if(currentNode.left != null){
+                if(currentNode.left != null){   //if node's left side is not empty add left side value to queue
                     q.add(currentNode.left);
                 }
                     //go to the left subtree
-                if(currentNode.right != null){
+                if(currentNode.right != null){  //if node's right side is not empty add right side value to queue
                     q.add(currentNode.right);
                 }
             }
