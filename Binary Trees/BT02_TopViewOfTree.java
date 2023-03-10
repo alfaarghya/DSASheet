@@ -27,7 +27,7 @@ public class BT02_TopViewOfTree {
     }
 
     public static void topView(Node root){
-            //step 1 -> level order Traversal
+            //Queue for level order Traversal
         Queue<Info> q = new LinkedList<>();
         HashMap<Integer, Node> map = new HashMap<>();   //to store top view(value) with horizontal distance(key)
 
