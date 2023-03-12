@@ -15,8 +15,8 @@ public class BT04_LowestCommonAncestor {
     }
         /*---- ----*/
 
-                    /*-------- Approach 1 --------*/
-    public static int LowestCommonAncestor(Node root, int n1, int n2){
+                    /*-------- Approach 1 >> Using extra space in term of Arraylist or Array --------*/
+    public static int LowestCommonAncestor(Node root, int n1, int n2){  //TC -> O(n), SC -> O(n)
             //when tree is empty
         if(root == null){
             System.out.println("Empty Tree");
@@ -65,33 +65,61 @@ public class BT04_LowestCommonAncestor {
     }
                             /*---- ----*/
 
+            /*-------- Approach 2 >> here we don't use extra space --------*/
+    public static Node lowestCommonAncestor(Node root, int n1, int n2){ //TC -> O(n), SC -> O(1)
+            //base case
+        if(root == null || root.data == n1 || root.data == n2){
+            return root;
+        }
+
+        Node leftLCA = lowestCommonAncestor(root.left, n1, n2); //check left side of current root
+        Node rightLCA = lowestCommonAncestor(root.right, n1, n2);   //check right side of current root
+
+        if(leftLCA == null){    //when left side of current root does not contain n1 or n2....that's mean n1 & n2 lies in right side
+            return rightLCA;
+        }
+        if(rightLCA == null){    //when right side of current root does not contain n1 or n2....that's mean n1 & n2 lies in left side
+            return leftLCA;
+        }
+
+        return root;    //when left side contain 1 node and right side contain 1 node..... that's mean root is LCA
+    }
+                                    /*---- ----*/
+
+
     public static void main(String[] args) {
         /*
                         1
-                       / \
-                      2   3
-                     / \
-                    4   5
-                   / \   \
-                  6   7   8
-                 /       / \
-                9      10   11
+                      /  \
+                     2    3
+                   /   \   \
+                  4     5   6
+                /  \     \
+               7    8     9
+                   / \   / \
+                 10  11 12  13
+                / \
+               14 15
          */
 
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
         root.left.left = new Node(4);
-        root.left.left.left = new Node(6);
-        root.left.left.left.left = new Node(9);
-        root.left.left.right = new Node(7);
+        root.left.left.left = new Node(7);
+        root.left.left.right = new Node(8);
+        root.left.left.right.left = new Node(10);
+        root.left.left.right.left.left = new Node(14);
+        root.left.left.right.left.right = new Node(15);
+        root.left.left.right.right = new Node(11);
         root.left.right = new Node(5);
-        root.left.right.right = new Node(8);
-        root.left.right.left = new Node(10);
-        root.left.right.right = new Node(11);
+        root.left.right.right = new Node(9);
+        root.left.right.right.left = new Node(12);
+        root.left.right.right.right = new Node(13);
+        root.right.right = new Node(6);
 
-        int n1 = 9, n2 = 11;
+        int n1 = 12, n2 = 6;
 
-        System.out.println(LowestCommonAncestor(root, n1, n2));
+        System.out.println(lowestCommonAncestor(root, n1, n2).data);    //here we have to write the data because return type is Node
     }
 }
