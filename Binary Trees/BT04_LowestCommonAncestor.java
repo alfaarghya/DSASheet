@@ -63,7 +63,7 @@ public class BT04_LowestCommonAncestor {
         path.remove(path.size()-1); //when left and right side both return false.....simply remove that node.....because after that node we don't have n value
         return false;
     }
-                            /*---- ----*/
+                                                /*---- ----*/
 
             /*-------- Approach 2 >> here we don't use extra space --------*/
     public static Node lowestCommonAncestor(Node root, int n1, int n2){ //TC -> O(n), SC -> O(1)
