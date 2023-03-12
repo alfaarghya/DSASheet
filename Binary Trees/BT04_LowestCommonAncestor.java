@@ -118,14 +118,14 @@ public class BT04_LowestCommonAncestor {
         root.left.right.right.right = new Node(13);
         root.right.right = new Node(6);
 
-        int n1 = 11, n2 = 11;
+        int n1 = 11, n2 = 12;
 
         Node ans = lowestCommonAncestor(root, n1, n2);
         if(ans == null){
             System.out.println("n1 & n2 values not in the tree");
         }
         else{
-            System.out.println(lowestCommonAncestor(root, n1, n2).data);    //here we have to write the data because return type is Node
+            System.out.println(ans.data);    //here we have to write the data because return type is Node
         }
 
     }
