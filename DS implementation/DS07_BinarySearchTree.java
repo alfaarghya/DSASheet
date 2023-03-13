@@ -46,7 +46,7 @@ class BinarySearchTree{
         return root;
     }
                         /*---- ----*/
-
+        /*---- In-Order Traversal ----*/
     public void inOrderTraversal(Node root){
             //base case
         if(root == null){
@@ -56,17 +56,43 @@ class BinarySearchTree{
         inOrderTraversal(root.left);    //check left side of current root
         System.out.print(root.data+" ");
         inOrderTraversal(root.right);   //check right side of current root
+    }
+                /*---- ----*/
+
+    public boolean searchNode(Node root, int key){
+            //base case
+        if(root == null){   
+            return false;   //when we unable to find out the key and reach to the null node
+        }
+
+        if(key == root.data){   //when we found the key
+            return true;
+        }
+
+        if(key < root.data){    //when key is smaller than root
+            return searchNode(root.left, key); //check for key in left side of current root
+        }
+        else {   //when key is larger than root
+            return searchNode(root.right, key);    //check for key in left side of current root
+        }
 
     }
-
 }
 
 public class DS07_BinarySearchTree {
     public static void main(String[] args) {
+        
         int[] bst_data1 = {5,1,3,4,2,7}; //pre order mode >> here root node is 5
         BinarySearchTree bst = new BinarySearchTree();
         Node root = bst.buildBST_fromPreOrderData(bst_data1);
+        System.out.println("------------------------------------");
         System.out.print("Whole Tree(InOrder) >> ");
         bst.inOrderTraversal(root);
+        System.out.println("\n------------------------------------");
+        int key = 7;
+        System.out.println("Is "+key+" in the tree?(true/false)?");
+        System.out.println(">> "+bst.searchNode(root, key));
+        System.out.println("------------------------------------");
+
     }
 }
