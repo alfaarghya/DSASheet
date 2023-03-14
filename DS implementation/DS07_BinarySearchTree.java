@@ -59,6 +59,7 @@ class BinarySearchTree{
     }
                 /*---- ----*/
 
+                /*---- Search For a key ----*/
     public boolean searchNode(Node root, int key){
             //base case
         if(root == null){   
@@ -75,14 +76,52 @@ class BinarySearchTree{
         else {   //when key is larger than root
             return searchNode(root.right, key);    //check for key in left side of current root
         }
-
     }
+                        /*---- ----*/
+
+    public Node deleteNode(Node root, int deleteData){
+        if(root.data < deleteData){ //current root's data is smaller than value 
+            root.right = deleteNode(root.right, deleteData);    //go to the right side of current root
+        }
+        else if(root.data > deleteData){    //current root's data is greater than value
+            root.left = deleteNode(root.left, deleteData);  //go to the left side of current root
+        }
+        else{   //when we found the node to delete
+
+                //case 1 -> delete the leaf node
+            if(root.left == null && root.right == null){    //current node's left and right both are null that's mean it is leaf node
+                return null;    //by this line....now leaf node's parent node point to the null instate of leaf
+            }
+
+                //case 2 -> delete a node which have single child
+            if(root.left == null){  //when current root node dose not have a child in left side
+                return root.right;  //by this line...... current root node's parent point to the current root node's right child instate of current root
+            }
+            else if(root.right == null){  //when current root node dose not have a child in right side
+                return root.left;  //by this line...... current root node's parent point to the current root node's right child instate of current root
+            }
+
+                //case 3 -> delete a node which have both child
+            Node IS = findInOrderSuccessor(root.right);
+            root.data = IS.data;    //replace current root's data by InOrder Successor
+            root.right = deleteNode(root.right, IS.data);   //now delete the IS data from current tree....because we just replace current root by IS but the IS node is still in this tree
+        }
+        return root;
+    }
+
+    private Node findInOrderSuccessor(Node root){
+        while(root.left != null){   //find until currents root's left side point to the null
+            root = root.left;
+        }
+        return root;    //return that current root
+    }
+
 }
 
 public class DS07_BinarySearchTree {
     public static void main(String[] args) {
         
-        int[] bst_data1 = {5,1,3,4,2,7}; //pre order mode >> here root node is 5
+        int[] bst_data1 = {8, 5, 3, 1, 4, 6, 10, 11, 14}; //pre order mode >> here root node is 5
         BinarySearchTree bst = new BinarySearchTree();
         Node root = bst.buildBST_fromPreOrderData(bst_data1);
         System.out.println("------------------------------------");
@@ -93,6 +132,16 @@ public class DS07_BinarySearchTree {
         System.out.println("Is "+key+" in the tree?(true/false)?");
         System.out.println(">> "+bst.searchNode(root, key));
         System.out.println("------------------------------------");
+        int deleteData = 10;
+        try{
+            bst.deleteNode(root, deleteData);
+            System.out.print("Delete "+deleteData+" from the tree >> ");
+            bst.inOrderTraversal(root);
+        }
+        catch(Exception e){
+            System.out.print(deleteData+" is not in the tree.!");
+        }
+        System.out.println("\n------------------------------------");
 
     }
 }
