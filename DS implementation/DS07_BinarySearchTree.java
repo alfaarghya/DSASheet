@@ -79,6 +79,7 @@ class BinarySearchTree{
     }
                         /*---- ----*/
 
+        /*---- Delete a Node from the tree ----*/
     public Node deleteNode(Node root, int deleteData){
         if(root.data < deleteData){ //current root's data is smaller than value 
             root.right = deleteNode(root.right, deleteData);    //go to the right side of current root
@@ -115,7 +116,7 @@ class BinarySearchTree{
         }
         return root;    //return that current root
     }
-
+                    /*---- ----*/
 }
 
 public class DS07_BinarySearchTree {
