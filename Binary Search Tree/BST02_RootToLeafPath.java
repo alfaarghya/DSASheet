@@ -29,7 +29,7 @@ public class BST02_RootToLeafPath {
                 /*---- ----*/
 
                 /*---- print paths from root to every leaf ----*/
-    public static void rootToLeafPaths(Node root, ArrayList<Integer> path){
+    public static void rootToLeafPaths(Node root, ArrayList<Integer> path){ //TC -> O(n)
             //base case
         if(root == null){
             return;
