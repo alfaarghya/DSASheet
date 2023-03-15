@@ -13,7 +13,7 @@ public class BST01_PrintDataInRange{
         }
         /*--- ----*/
 
-    public static void printInRange(Node root, int lowerBound, int upperBound){
+    public static void printInRange(Node root, int lowerBound, int upperBound){ //TC -> O(n)
             //base case
         if(root == null){
             return;
@@ -64,6 +64,7 @@ public class BST01_PrintDataInRange{
         root.right = new Node(10);
         root.right.right = new Node(11);
         root.right.right.right = new Node(14);
+
         System.out.print("Binary Tree >> ");
         inOrderTraversal(root);
         System.out.println();
