@@ -27,13 +27,13 @@ Follow up: If you have figured out the O(n) solution, try coding another solutio
 
 public class Array03_MaximumSumSubArray {
 
-        //kadaen's method
+        /*---- kadaen's method ----*/
     public static int maxSumOfSubArray(int arr[]){
             //step 1 -> initialize values
         int currSum = 0;
         int maxSum = Integer.MIN_VALUE; //it refers to -infinity
 
-            //step 2
+            //step 2 -> run a loop and do work
         for(int i = 0; i < arr.length; i++){
             currSum += arr[i];//sum 
             if(currSum <= 0){   //if current sum less then 0, then reassigned the value 0 to current sum
