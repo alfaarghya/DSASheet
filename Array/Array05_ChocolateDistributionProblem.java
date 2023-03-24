@@ -19,26 +19,29 @@ Examples:
 
 import java.util.Arrays;
 public class Array05_ChocolateDistributionProblem {
+
     public static int minDiff(int arr[], int m){    //TC -> O(n)
             //step 1 -> sort the array(we can use java in build sorting algo <<or>> we can make our own sorting algo)
         Arrays.sort(arr);   //java built in sort
-        // bubbleSort(arr);    //user defined sorting
-            //step 2 -> initialize -infinity & run a loop
+        // bubbleSort(arr);    //we can also use .... user defined sorting instate of build in sort
+            //step 2 -> initialize +infinity & run a loop
         int minDiff = Integer.MAX_VALUE;    //+infinity
         for(int i = 0; i < arr.length; i++){
                 //step 3 -> difference between maximum and minimum
-                int diff = arr[i+m-1]-arr[i];
+            int diff = arr[i+m-1]-arr[i];
                 //step 4 -> compare
             if(minDiff > diff){
                 minDiff = diff;
             }
-                //corner case -> this will stop the loop 
+                    //corner case -> this will stop the loop 
             if((i+m-1) >= arr.length-1){
                 break;
             }
         }
+
         return minDiff;
     }
+        /*---- Bubble Sort algo ----*/
     public static void bubbleSort(int arr[]){
         for(int i = 0; i < arr.length-1; i++){
             int track = 0;
@@ -56,6 +59,8 @@ public class Array05_ChocolateDistributionProblem {
             }
         }
     }
+                /*---- ----*/
+
     public static void main(String args[]){
         int arr1[] = {7, 3, 2, 4, 9, 12, 56};
         int arr2[] = {3, 4, 1, 9, 56, 7, 9, 12};
