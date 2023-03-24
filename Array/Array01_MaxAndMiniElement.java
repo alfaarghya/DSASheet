@@ -35,7 +35,9 @@ public class Array01_MaxAndMiniElement{
         return min;
     }
     public static void main(String args[]){
-        int arr1[] = {3, 5, 4, 1, 9}, arr2[] = {22, 14, 8, 17, 35, 5}, arr3[] = {1000, 11, 445, 1, 330, 3000};
+        int arr1[] = {3, 5, 4, 1, 9};
+        int arr2[] = {22, 14, 8, 17, 35, 5};
+        int arr3[] = {1000, 11, 445, 1, 330, 3000};
         int arr[] = {1000, 11, 445, 1, 330, 3000, 3, 5, 4, 1, 9, 22, 14, 8, 17, 35, 5};
         System.out.println("Maximum element -> "+ maxElement(arr));
         System.out.println("Minimum element -> "+ minElement(arr));
