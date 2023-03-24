@@ -9,8 +9,8 @@ Output : arr[] = {2, 1, 5, 4}
  */
 
 public class Array02_ReverseArray {
-        //Iterative way
-    public static void reverseArray(int arr[]){
+        /*----Approach 1 --> Iterative way ----*/
+    public static void reverseArray(int arr[]){ //TC -> O(n)
         int startIndex = 0; //always start from index 0
         int endIndex = arr.length-1;  //array have 0 to n-1 index & n is the size of array
         while(startIndex < endIndex){
@@ -24,9 +24,9 @@ public class Array02_ReverseArray {
             endIndex--;
         }
     }
-    
-        //recursive way
-    public static void reverseArray(int arr[], int startIndex, int endIndex){
+                    /*---- ----*/
+        /*----Approach 2 --> recursive way ----*/
+    public static void reverseArray(int arr[], int startIndex, int endIndex){   //TC -> O(n)
             //base case
         if(startIndex >= endIndex){
             return;
@@ -39,7 +39,7 @@ public class Array02_ReverseArray {
             //calling recursive function
         reverseArray(arr, startIndex+1, endIndex-1);
     }
-
+                    /*---- ----*/
         //print array
     public static void printArray(int arr[]){
         for(int i = 0; i < arr.length; i++){
