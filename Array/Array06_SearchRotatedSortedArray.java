@@ -27,8 +27,9 @@ Constraints:
  */
 
 public class Array06_SearchRotatedSortedArray {
-            //iterative method
+            /*---- iterative method ----*/
     public static int searchTarget(int arr[], int target){
+
         int startIndex = 0;
         int endIndex = arr.length-1;
 
@@ -66,7 +67,9 @@ public class Array06_SearchRotatedSortedArray {
         
         return -1;  //when target is not there in array
     }
-            //recursive method
+                    /*---- ----*/
+
+            /*---- recursive method ----*/
     public static int searchTarget(int arr[], int target, int startIndex, int endIndex){    //TC -> O(log n)
             //base case
         if(startIndex > endIndex){
@@ -102,6 +105,7 @@ public class Array06_SearchRotatedSortedArray {
             }
         }
     }
+                /*---- ----*/
 
     public static void main(String args[]) {
         int nums[] = {4,5,6,7,0,1,2};
