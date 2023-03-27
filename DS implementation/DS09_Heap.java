@@ -137,7 +137,7 @@ class MaxHeap {
         int rightChild = 2*i+2;
         int minIndex = i;
         
-            //if one of child is smaller than parent catch the index
+            //if one of child is greater than parent catch the index
         if(leftChild < arr.size() && arr.get(minIndex)<arr.get(leftChild)){
             minIndex = leftChild;
         }
