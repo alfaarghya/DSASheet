@@ -20,7 +20,7 @@ Examples:
 import java.util.Arrays;
 public class Array05_ChocolateDistributionProblem {
 
-    public static int minDiff(int arr[], int m){    //TC -> O(n)
+    public static int minDiff(int arr[], int m){    //TC -> O(n*log(n))
             //step 1 -> sort the array(we can use java in build sorting algo <<or>> we can make our own sorting algo)
         Arrays.sort(arr);   //java built in sort
         // bubbleSort(arr);    //we can also use .... user defined sorting instate of build in sort
