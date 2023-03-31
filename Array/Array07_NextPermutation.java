@@ -62,7 +62,7 @@ public class Array07_NextPermutation {
             arr[successor] = temp;
 
                 //reverse in range of successor+1 to arr.length-1
-            reverseArray(arr, successor+1, sizeOfArray);
+            reverseArray(arr, pivotPoint+1, sizeOfArray);
         }
 
     }
