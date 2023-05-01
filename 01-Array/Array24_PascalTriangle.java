@@ -17,8 +17,30 @@ Constraints:
 
  */
 
+import java.util.ArrayList;
 public class Array24_PascalTriangle {
+
+    public static void printPascalTriangle(int rowNum) {
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        ArrayList<Integer> listN = new ArrayList<>();
+
+        for(int i = 0; i < rowNum; i++) {
+            ArrayList<Integer> inside = new ArrayList<>();
+            for(int j = 0; j <= i; j++) {
+                if(j == 0 || j == i) {
+                    inside.add(j, 1);
+                } else {
+                    inside.add(j, listN.get(j)+listN.get(j-1));
+                }
+            }
+            listN = inside;
+            list.add(i,listN);
+        }
+
+        System.out.println(list);
+    }
+
     public static void main(String[] args) {
-        
+        printPascalTriangle(5);
     }
 }
