@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: linear-gradient(90deg, #060606 , #222222, #060606);
+    background-size: 30000% 30000%;
+    animation: bganimation 20s linear  infinite;
+    height: 100vh;
+
+}
+
+@keyframes bganimation {
+    from {
+            background-position: 0% 100%;
+        }
+        to {
+            background-position: 100% 0%;
+        }
+}
+
+
+.bg{
+    color: #000000;
+    text-align: center;
+    padding: 10vh 0 0 0;
+    font-size: 15VW;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.main{
+    cursor: default;
+    padding: 10vh 0 0 0;
+}
+
+.fly{
+    position: absolute;
+    transform: translate(85%, -225%);
+    color: #bebebe;
+    font-family: 'Cherish', cursive;
+    /* font-family: 'Kaushan Script', cursive; */
+    /* font-family: 'Tangerine', cursive; */
+    font-size: 8vw;
+}

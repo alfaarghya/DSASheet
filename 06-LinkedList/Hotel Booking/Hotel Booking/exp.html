@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>roombooking</title>
+    <!-- <link rel="stylesheet" href="css/roombooking.css"> -->
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: linear-gradient(90deg, #1a1a1a , #2a2a2a, #1a1a1a);
+    background-size: 30000% 30000%;
+    animation: bganimation 30s linear  infinite;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    place-items: center;
+}
+@keyframes bganimation {
+    from {
+            background-position: 0% 100%;
+        }
+        to {
+            background-position: 100% 0%;
+        }
+}
+
+.main{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    /* position: fixed; */
+}
+
+.fr{
+    height: 460px;
+    width: 390px;
+    padding: 53px 12px 96px 72px;
+    place-items: center;
+    background: linear-gradient(135deg, #e1e1e11a, #e1e1e100); /* glass effect*/
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px #0a0a0a;
+}
+.formhead{
+    text-align: center;
+    color: #000000;
+    cursor: default;
+    font-size: 30px;
+    padding: 0px 51px 25px 0;
+    /* padding-bottom: 25px; */
+    /* font-family: 'Cherish', cursive; */
+}
+
+#nm, #mnum, #email, #T_Members, #C_Members, #A_Members{
+    display: block;
+}
+.sm{
+    border: 1px solid #6b6b6b;
+    background: transparent;
+    border-radius: 5px;
+    height: 32px;
+    width: 318px;
+    font-size: 13px;
+    outline: none;
+    padding: 13px 5px 0px 5px;
+    color: #ffffff;
+}
+
+.sm:focus, .dt:focus, .rca:focus{
+    border: 1.5px solid #c2c1c1;
+}
+.sml{
+    position: relative;
+    top: -32px;
+    left: 24px;
+    font-size: 17px;
+    color: #6b6b6b;
+    pointer-events: none;
+    transition: 0.3s all;
+}
+
+.sm:focus ~ .sml,
+.sm:valid ~ .sml{
+    top: -50px;
+    left: 10px;
+    background: transparent;
+    padding: 0 8px;
+    font-size: 80%;
+    color: #c2c1c1;
+
+}
+
+
+
+.buton{
+    height: 32px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: #3b6bdb;
+    cursor: pointer;
+    padding: 0 137px ;
+}
+
+.buton-link{
+    text-decoration: none;
+    /* display: block; */
+}
+
+.buton-link-span{
+    /* color: #7a7a7a; */
+    font-size: 16px;
+    color: #dcddde;
+}
+
+.date{
+    display: flex;
+    padding: 0px 1px 13px 0px;
+}
+.dt{
+    height: 32px;
+    width: 120px;
+    border: 1px solid #6b6b6b;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 15px;
+    background: transparent;
+    color: #c2c1c1;
+    /* font-size: 13px; */
+}
+
+.date-span{
+    font-size: 13px;
+    padding-left: 4px;
+}
+
+.rca_num{
+    display: flex;
+    height: 42px;
+    padding: 0 0 0 0;
+    /* width: 0px; */
+}
+
+.rca{
+    border: 1px solid #6b6b6b;
+    background: transparent;
+    border-radius: 5px;
+    height: 20px;
+    width: 90px;
+    font-size: 13px;
+    outline: none;
+    padding: 13px 5px 0px 5px;
+    margin: 0 4px;
+    color: #ffffff;    
+}
+
+.rca_l{
+    position: relative;
+    top: -26px;
+    left: 24px;
+    font-size: 17px;
+    color: #6b6b6b;
+    pointer-events: none;
+    transition: 0.3s all;
+}
+.rca:focus ~ .rca_l,
+.rca:valid ~ .rca_l{
+    top: -38px;
+    left: 10px;
+    background: transparent;
+    padding: 0 8px;
+    font-size: 80%;
+    color: #c2c1c1;
+}
+
+.type{
+    padding: 0 0 15px 0;
+}
+
+.lc{
+    border: 1px solid #6b6b6b;
+    background: transparent;
+    border-radius: 5px;
+    height: 32px;
+    width: 226px;
+    font-size: 13px;
+    outline: none;
+    color: #ffffff;
+    /* padding: 13px 5px 0px 5px; */
+    /* margin: 0 4px; */
+}
+
+.ro{
+    border: 1px solid #6b6b6b;
+    background: transparent;
+    border-radius: 5px;
+    height: 32px;
+    width: 226px;
+    font-size: 13px;
+    outline: none;
+    margin-left: 47px;
+    color: #ffffff;
+}
+.lc:focus, .ro:focus{
+    border: 1.5px solid #c2c1c1;
+}
+
+span{
+    color: #c2c1c1;
+}
+    </style>
+</head>
+
+<body> 
+
+    <div class="main">
+        <div class="fr">
+            <form name="Room Booking" method="post" acti on="#" class="">
+                <div class="formhead">
+                    <h3>ROOM BOOKING</h3>
+                </div>
+                <div class="formbody">
+                    <div class="select">
+                        <div class="Location type">
+                            <span>Your Location:</span>
+                            <select name="Location" class="lc">                    
+                                <option  value="Jaipur,Rajastan">Jaipur,Rajastan</option>
+                                <option value="Darjelling,West Bengal" selected>Darjelling,West Bengal</option>
+                                <option  value="Srinagar,Kasmir">Srinagar,Kasmir</option>
+                                <option value="Ludhiyana,Punjab">Ludhiyana,Punjab</option>
+                                <option  value="Bengaluru,Karnataka">Bengaluru,Karnataka</option>
+                                <option  value="Panaji,Goa">Panaji,Goa</option>
+                                <option value="Mumbai,Maharastra">Mumbai,Maharastra</option>
+                                <option  value="Bhubaneswar,Odisha">Bhubaneswar,Odisha</option>
+                                <option value="Telangana,Hyderabad">Telangana,Hyderabad</option>
+                                <option value="Agra,Utter Pradesh">Agra,Utter Pradesh</option>
+                                <option  value="Chennai,Tamil Nadu">Chennai,Tamil Nadu</option>
+                                <option value="Thiruvanthapuram,Kerala">Thiruvanthapuram,Kerala</option>                   
+                            </select>
+                        </div>
+                        
+                        <div class="Room_type type" >
+                            <span>Rooms:</span>
+                            <select name="Room" class="ro">                    
+                                <option  value="Single">Single</option>
+                                <option value="Double" selected >Double</option>
+                                <!-- <option  value="Quad">Quad</option> -->
+                                <option value="Twin">Twin</option>
+                                <option  value="King">King</option>
+                                <!-- <option  value="Appartments">Appartments</option> -->
+                                <!-- <option value="Duplex room">Duplex room</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="rca_num">
+                        <span class="Total_Members">
+                            <input type="number" id="T_Members" class="rca" name="T_Members" autocomplete="off" required="required">
+                            <label class="rca_l" for="T_Members">Room</label>
+                        </span>
+
+                        <span class="Child_Members">
+                            <input type="number" id="C_Members" class="rca" name="C_Members"  autocomplete="off" required="required">
+                            <label class="rca_l" for="C_Members">Child</label>
+                        </span>
+                        <span class="Adult_Members">
+                            <input type="number" id="A_Members" class="rca" name="A_Members"  autocomplete="off" required="required">
+                            <label class="rca_l" for="A_Members">Adult</label>
+                        </span>
+                    </div>
+                    
+
+                    <div class="date">
+                        <div class="Checkindate">
+                            <span class="date-span">Check in date </span>
+                            <input type="date" class="dt" name="C_in date" placeholder="check in date" autocomplete="off" required="required">
+                        </div>
+
+                        <div class="Checkoutdate">
+                            <span class="date-span">Check out date </span>
+                            <input type="date" class="dt" name="C_out date" placeholder="check out date" autocomplete="off" required="required">
+                        </div>
+                    </div>
+                    
+                    <div class="Name">
+                        <input type="text" name="name" autocomplete="off" required="required" id="nm" class="sm">
+                        <label class="sml"  for="nm">First Name</label>
+                    </div>
+
+                    <div class="M_no">
+                        <input type="text" name="m_number" autocomplete="off" required="required" id="mnum" class="sm">
+                        <label  class="sml" for="mnum">Mobile Number</label>
+                    </div>
+    
+                    <div class="Email">
+                        <input type="text" name="e_id" autocomplete="off" required="required" id="email" class="sm">
+                        <label  class="sml" for="email">Email</label>
+                    </div>
+                    <div class="bt">
+                        <button class="buton">
+                            <a href="#" class="buton-link">
+                                <span class="buton-link-span">submit</span>
+                            </a>
+                        </button>
+                    </div>                        
+                </div>
+                
+            
+            
+            </form>
+        </div>
+    </div>
+    
+
+</body>
+</html>
