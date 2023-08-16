@@ -1,3 +1,5 @@
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 class Queue1 {  //Time complexity of Add operation is O(n)
@@ -76,7 +78,39 @@ class Queue2 {  //Time complexity of Add operation is O(n)
         return stk2.peek();
     }
 }
+class QueueUsingDeque {
+    Deque<Integer> dq = new LinkedList<>();
 
+    boolean isEmpty() {
+        return dq.isEmpty();
+    }
+
+    void add(int data) {
+        if(isEmpty()) {
+            dq.addFirst(data);
+            return;
+        }
+
+        dq.addLast(data);
+    }
+
+    int remove() {
+        if(isEmpty()) {
+            System.out.println("Queue is empty.........");
+            return Integer.MIN_VALUE;
+        }
+
+        return dq.removeFirst();
+    }
+    int peek() {
+        if(isEmpty()) {
+            System.out.println("Queue is empty.........");
+            return Integer.MIN_VALUE;
+        }
+
+        return dq.getFirst();
+    }
+}
 public class Queue01_QueueUsingStacks {
     public static void main(String[] args) {
         Queue1 q1 = new Queue1();
@@ -94,6 +128,7 @@ public class Queue01_QueueUsingStacks {
         }
         System.out.println("\n"+q1.isEmpty());
 
+        System.out.println("------------------------------");
         
         Queue2 q2 = new Queue2();
         System.out.println(q2.isEmpty());
@@ -109,5 +144,23 @@ public class Queue01_QueueUsingStacks {
             // q2.remove();
         }
         System.out.println("\n"+q2.isEmpty());
+
+        System.out.println("------------------------------");
+
+        QueueUsingDeque q3 = new QueueUsingDeque();
+        System.out.println(q3.isEmpty());
+        q3.add(0);
+        q3.add(1);
+        q3.add(2);
+        q3.add(3);
+        q3.add(4);
+        q3.add(5);
+
+        while(!q3.isEmpty()) {
+            System.out.print(q3.remove()+" ");
+            // q2.remove();
+        }
+        System.out.println("\n"+q3.isEmpty());
+
     }
 }

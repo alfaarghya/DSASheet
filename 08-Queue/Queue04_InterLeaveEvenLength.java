@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Queue04_InterLeaveEvenLength {
 
-    public static List<Integer> InterLeave(int arr[]) {
+    public static List<Integer> InterLeave(int arr[]) { //TC -> O(n)
         int n = arr.length;
 
         List<Integer> ans = new ArrayList<>();

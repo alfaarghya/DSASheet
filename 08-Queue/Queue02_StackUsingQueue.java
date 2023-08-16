@@ -1,3 +1,4 @@
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -116,6 +117,37 @@ class Stack2 {
     }
 }
 
+class StackUsingDeque {
+    Deque<Integer> dq = new LinkedList<>();
+
+    boolean isEmpty() {
+        return dq.isEmpty();
+    }
+
+    void push(int data) {
+        dq.addFirst(data);
+    }
+
+    int pop() {
+        if(isEmpty()) {
+            System.out.println("Stack is Empty...........");
+            return Integer.MIN_VALUE;
+        }
+
+        return dq.removeFirst();
+    }
+
+    int peek() {
+        if(isEmpty()) {
+            System.out.println("Stack is Empty...........");
+            return Integer.MIN_VALUE;
+        }
+
+        return dq.getFirst();
+    }
+}
+
+
 public class Queue02_StackUsingQueue {
     public static void main(String[] args) {
         Stack1 s1 = new Stack1();
@@ -138,6 +170,18 @@ public class Queue02_StackUsingQueue {
         while(!s2.isEmpty()){
             System.out.println(s2.peek());
             s2.pop();
+        }
+        System.out.println("-------------------------");
+
+        StackUsingDeque s3 = new StackUsingDeque();
+        s3.push(0);
+        s3.push(1);
+        s3.push(2);
+        s3.push(3);
+
+        while(!s3.isEmpty()){
+            System.out.println(s3.peek());
+            s3.pop();
         }
     }
 }
