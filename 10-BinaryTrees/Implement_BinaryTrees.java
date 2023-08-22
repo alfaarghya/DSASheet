@@ -1,3 +1,5 @@
+import java.util.Queue;
+import java.util.LinkedList;
 
 class Node {
     int data;
@@ -19,17 +21,22 @@ class BinaryTree {
     }
     public void preOrderTraversal() {
         System.out.print("Pre-Order Traversal >> ");
-        preOrder(root);
+        preOrderTraversal(root);
         System.out.println();
     }
     public void inOrderTraversal() {
         System.out.print("In-Order Traversal >> ");
-        inOrder(root);
+        inOrderTraversal(root);
         System.out.println();
     }
     public void postOrderTraversal() {
         System.out.print("Post-Order Traversal >> ");
-        postOrder(root);
+        postOrderTraversal(root);
+        System.out.println();
+    }
+    public void levelOrderTraversal() {
+        System.out.println("Level-Order Traversal >> ");
+        levelOrderTraversal(root);
         System.out.println();
     }
         /*-------- --------*/
@@ -55,39 +62,75 @@ class BinaryTree {
     }
                 /*---- ----*/
         /*---- Pre-order Traversal ----*/
-    private void preOrder(Node root) {  //TC -> O(n)
+    private void preOrderTraversal(Node root) {  //TC -> O(n)
             //base case --> root node reaches leaf node
         if(root == null) {
             return;
         }
 
         System.out.print(root.data+" ");
-        preOrder(root.left);    //left side of current root
-        preOrder(root.right);   //right side of current root
+        preOrderTraversal(root.left);    //left side of current root
+        preOrderTraversal(root.right);   //right side of current root
     }
                 /*---- ----*/
         /*---- In-order Traversal ----*/
-    private void inOrder(Node root) {   //TC -> O(n)
+    private void inOrderTraversal(Node root) {   //TC -> O(n)
             //base case -> root node reaches leaf node
         if(root == null) {
             return;
         }
 
-        inOrder(root.left); //left side of current root node
+        inOrderTraversal(root.left); //left side of current root node
         System.out.print(root.data+" ");
-        inOrder(root.right);    //right side of current root node
+        inOrderTraversal(root.right);    //right side of current root node
     }
                 /*---- ----*/
         /*---- Post-order Traversal ----*/
-    private void  postOrder(Node root) {    //TC ->O(n)
+    private void  postOrderTraversal(Node root) {    //TC ->O(n)
             //base case -> root node reaches leaf node
         if(root == null) {
             return;
         }
 
-        postOrder(root.left);   //left side of current root node
-        postOrder(root.right);  //right side of current root node
+        postOrderTraversal(root.left);   //left side of current root node
+        postOrderTraversal(root.right);  //right side of current root node
         System.out.print(root.data+" ");
+    }
+                /*---- ----*/
+        /*---- Level-Order Traversal ----*/
+    private void levelOrderTraversal(Node root) {
+            //binary tree is empty
+        if(root == null) {
+            return;
+        }
+
+        Queue<Node> q = new LinkedList<>();
+
+        q.add(root);//root node
+        q.add(null); //here null refers to next line
+
+        while(!q.isEmpty()) {
+            Node currentNode = q.remove();
+
+            if(currentNode == null) {   //new level
+                System.out.println(); //adding a level
+                if(q.isEmpty()) {   //when queue is empty stop the loop
+                    break;
+                } else {
+                    q.add(null);
+                }
+            } else {    //print value
+                System.out.print(currentNode.data+" ");
+
+                if(currentNode.left != null) {//if node's left side is not empty add left side value to queue
+                    q.add(currentNode.left);
+                }
+                if(currentNode.right != null) {//if node's right side is not empty add right side value to queue
+                    q.add(currentNode.right);
+                }
+            }
+        }
+
     }
                 /*---- ----*/
         /*----------- -----------*/
@@ -113,5 +156,6 @@ public class Implement_BinaryTrees {
         bt.preOrderTraversal();
         bt.inOrderTraversal();
         bt.postOrderTraversal();
+        bt.levelOrderTraversal();
     }
 }
