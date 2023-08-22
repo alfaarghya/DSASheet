@@ -45,6 +45,9 @@ class BinaryTree {
     public void countNodes() {
         System.out.println("Number of Nodes in the tree >> "+countNodes(root));
     }
+    public void diameterOfTree() {
+        System.out.println("Diameter of the tree >> "+diameter(root).diameter);
+    }
         /*-------- --------*/
 
 /*------------ Working Functions ------------*/
@@ -165,7 +168,31 @@ class BinaryTree {
         return leftSide+rightSide+1;    //left-Side-Nodes + right-Side-Nodes + current-root-node
     }
                 /*---- ----*/
+        /*---- Diameter of Binary tree ----*/
+    private static class Info {
+        int diameter;
+        int height;
 
+        Info(int diameter, int height) {
+            this.diameter = diameter;
+            this.height = height;
+        }
+    }
+    private Info diameter(Node root) {
+            //base case
+        if(root == null) {
+            return new Info(0,0);
+        }
+
+        Info leftInfo = diameter(root.left);
+        Info rightInfo = diameter(root.right);
+
+        int diam = Math.max(leftInfo.height + rightInfo.height + 1, Math.max(leftInfo.diameter,rightInfo.diameter));
+        int ht = Math.max(leftInfo.height, rightInfo.height)+1;
+
+        return new Info(diam, ht);
+    }
+                /*---- ----*/
         /*----------- -----------*/
 }
 
@@ -192,5 +219,6 @@ public class Implement_BinaryTrees {
         bt.levelOrderTraversal();
         bt.heightOfTree();
         bt.countNodes();
+        bt.diameterOfTree();
     }
 }
