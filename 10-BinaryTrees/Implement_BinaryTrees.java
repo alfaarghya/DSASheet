@@ -39,6 +39,9 @@ class BinaryTree {
         levelOrderTraversal(root);
         System.out.println();
     }
+    public void heightOfTree() {
+        System.out.println("Height of the tree >> "+height(root));
+    }
         /*-------- --------*/
 
 /*------------ Working Functions ------------*/
@@ -133,6 +136,18 @@ class BinaryTree {
 
     }
                 /*---- ----*/
+    private int height(Node root) {
+            //base case --> current root node is null
+        if(root == null) {
+            return 0;
+        }
+
+        int leftHeight = height(root.left); //left sub-tree height
+        int rightHeight = height(root.right);   //right sub-tree height
+
+        return Math.max(leftHeight,rightHeight)+1;
+
+    }
         /*----------- -----------*/
 }
 
@@ -157,5 +172,6 @@ public class Implement_BinaryTrees {
         bt.inOrderTraversal();
         bt.postOrderTraversal();
         bt.levelOrderTraversal();
+        bt.heightOfTree();
     }
 }
