@@ -46,6 +46,13 @@ class BinarySearchTree {
         System.out.println("is "+key+" avaible?(true/false)");
         System.out.println(">> "+search(root, key));
     }
+    public void deleteNode(int deleteKey) {
+        try {
+            deleteNode(root, deleteKey);
+        } catch(Exception e) {
+            System.out.println("ERROR >> "+deleteKey+" is not in the tree");
+        }
+    }
             /*---------- --------- */
 
 
@@ -193,6 +200,41 @@ class BinarySearchTree {
         }
     }
                 /*---- ----*/
+        /*---- Delete a Node from BST ----*/
+    private Node deleteNode(Node root, int deleteKey) {
+        if(deleteKey < root.data) { //current root's data is greater than deleteKey
+            root.left = deleteNode(root.left, deleteKey);
+        } else if(deleteKey > root.data) {  //current root's data is smaller than deleteKey
+            root.right = deleteNode(root.right, deleteKey);
+        } else {    //found the Node to delete
+
+                //case 1 --> delete a leaf Node
+            if(root.left == null && root.right == null) {   //current node's left and right both are null that's mean it is leaf node
+                return null; //by this line....now leaf node's parent node point to the null instate of leaf
+            }
+
+                //case 2 --> delete Node with single child
+            if(root.left == null) { //current root node have only right child
+                return root.right;  //by this line...... current root node's parent point to the current root node's right child instate of current root
+            } else if(root.right == null) { //current root node have only left child
+                return root.left;    //by this line...... current root node's parent point to the current root node's right child instate of current root
+            }
+
+                //case 3 --> delete node who have both child
+            Node successor = findInOrderSuccessor(root.right);
+            root.data = successor.data; //replace current root's data by InOrder Successor
+            root.right  = deleteNode(root.right,successor.data);    //now delete the successor's data from current tree....because we just replace current root by successor but the successor node is still in this tree
+        }
+        return root;
+    }
+
+    private Node findInOrderSuccessor(Node root){
+        while(root.left != null){   //find until currents root's left side point to the null
+            root = root.left;
+        }
+        return root;    //return that current root
+    }
+                /*---- ----*/
             /*---------- ----------*/
 }
 
@@ -212,5 +254,8 @@ public class Implement_BinarySearchTree {
 
         bst.search(7);
 
+        bst.deleteNode(8);
+        bst.inOrderTraversal();
+        bst.levelOrderTraversal();
     }
 }
