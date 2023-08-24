@@ -40,6 +40,9 @@ class BinarySearchTree {
         levelOrderTraversal(root);
         System.out.println();
     }
+    public void insert(int data) {
+        insert(root, data);
+    }
             /*---------- --------- */
 
 
@@ -181,6 +184,11 @@ public class Implement_BinarySearchTree {
         bst.preOrderTraversal();
         bst.postOrderTraversal();
         bst.levelOrderTraversal();
-    
+        
+        bst.insert(9);
+        bst.inOrderTraversal();
+        bst.levelOrderTraversal();
+
+
     }
 }
