@@ -18,7 +18,6 @@ class BinarySearchTree {
     /*--------- Calling Function ---------*/
     BinarySearchTree(int[] dataSet) {
         root = buildBST(dataSet);
-        System.out.println("------ Success -------");
     }
     public void inOrderTraversal() {
         System.out.print("In-Order Traversal >> ");
@@ -42,6 +41,10 @@ class BinarySearchTree {
     }
     public void insert(int data) {
         insert(root, data);
+    }
+    public void search(int key) {
+        System.out.println("is "+key+" avaible?(true/false)");
+        System.out.println(">> "+search(root, key));
     }
             /*---------- --------- */
 
@@ -172,6 +175,24 @@ class BinarySearchTree {
 
     }
                 /*---- ----*/
+        /*---- Search in BST ----*/
+    private boolean search(Node root, int key) {
+            //base case
+        if(root == null) {
+            return false;
+        }
+
+        if(key == root.data) {
+            return true;
+        }
+
+        if(key < root.data) {
+            return search(root.left, key);
+        } else {
+            return search(root.right, key);
+        }
+    }
+                /*---- ----*/
             /*---------- ----------*/
 }
 
@@ -189,6 +210,7 @@ public class Implement_BinarySearchTree {
         bst.inOrderTraversal();
         bst.levelOrderTraversal();
 
+        bst.search(7);
 
     }
 }
