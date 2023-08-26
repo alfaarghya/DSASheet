@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Node {
     int data;
     Node left;
@@ -11,23 +14,26 @@ class Node {
 }
 public class BT02_KthLevelNode {
 
-    public static void kthLevelNodes(Node root, int kthLv) {
-        kthLevelNodes(root, 1, kthLv);
+    public static List<Integer> kthLevelNodes(Node root, int kthLv) {
+        List<Integer> ans = new ArrayList<>();
+        kthLevelNodes(root, 1, kthLv, ans);
+        return ans;
     }
 
-    private static void kthLevelNodes(Node root, int currentLv, int kthLv) {
+    private static void kthLevelNodes(Node root, int currentLv, int kthLv, List<Integer> ans) {
             //base case ->  current root is null
         if(root == null) {
             return;
         }
 
-        if(currentLv == kthLv) {
-            System.out.println(root.data+" ");
+            //when current level match with K th level 
+        if(currentLv == kthLv) {    
+            ans.add(root.data);
             return;
         }
 
-        kthLevelNodes(root.left, currentLv+1, kthLv);
-        kthLevelNodes(root.right, currentLv+1, kthLv);
+        kthLevelNodes(root.left, currentLv+1, kthLv, ans);  //left side of current root >> level will increase
+        kthLevelNodes(root.right, currentLv+1, kthLv, ans); //right side of current root >> level will increase
     }
 
     public static void main(String[] args) {
@@ -47,8 +53,8 @@ public class BT02_KthLevelNode {
          root.right.left = new Node(6);
          root.right.right = new Node(7);
  
-         int k = 3;
+         int k = 2;
 
-         kthLevelNodes(root,k);
+        System.out.println(kthLevelNodes(root,k));
     }
 }
