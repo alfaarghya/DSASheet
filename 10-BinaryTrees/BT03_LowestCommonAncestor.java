@@ -122,3 +122,4 @@ public class BT03_LowestCommonAncestor {
          System.out.println(lowestCommonAncestor_approch2(root, n1, n2).data);
     }
 }
+ 
