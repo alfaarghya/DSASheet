@@ -202,13 +202,12 @@ public class Implement_Heap {
         mh.add(1);
 
         mh.show();
-        /*
-         * 1
-         * / \
-         * 5 7
-         * / \
-         * 8 6
-         */
+        /*  1
+           / \
+          5   7
+         / \
+        8   6
+                */
 
         mh.peek();
         mh.remove();
@@ -227,13 +226,12 @@ public class Implement_Heap {
         maxH.add(1);
 
         maxH.show();
-        /*
-         * 8
-         * / \
-         * 7 6
-         * / \
-         * 5 1
-         */
+        /*  8
+           / \
+          7   6
+         / \
+        5   1
+                */
         maxH.peek();
 
         maxH.remove();
