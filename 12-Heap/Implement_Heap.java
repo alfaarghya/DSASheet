@@ -9,6 +9,9 @@ class MinHeap {
         insert(data);
     }
 
+    public void peek() {
+        System.out.println("Peek >> " + peekInto());
+    }
     public void show() {
         System.out.println("MinHeap >> "+arr);
     }
@@ -37,6 +40,11 @@ class MinHeap {
         }
     }
         /*---- ----*/
+        /*--- Peek on Heap- ----*/
+    private int peekInto() {    //TC -> O(1) || SC -> O(1)
+        return arr.get(0);
+    }
+        /*---- ----*/
 
         /*------ ------*/
     
@@ -52,6 +60,9 @@ class MaxHeap {
         insert(data);
     }
 
+    public void peek() {
+        System.out.println("Peek >> " + peekInto());
+    }
     public void show() {
         System.out.println("MaxHeap >> "+arr);
     }
@@ -80,6 +91,11 @@ class MaxHeap {
         }
     }
         /*---- ----*/
+    /*--- Peek on Heap- ----*/
+    private int peekInto() {    //TC -> O(1) || SC -> O(1)
+        return arr.get(0);
+    }
+        /*---- ----*/
 
         /*------ ------*/
     
@@ -103,8 +119,12 @@ public class Implement_Heap {
         8   6      
     */    
         
+    mh.peek();
 
     // --------------------------------------------
+        System.out.println("---------- ---------");
+    // --------------------------------------------
+
     MaxHeap maxH = new MaxHeap();
     maxH.add(5);
     maxH.add(6);
@@ -119,6 +139,7 @@ public class Implement_Heap {
          / \
         5   1      
     */  
+    maxH.peek();
 
     }
 }
