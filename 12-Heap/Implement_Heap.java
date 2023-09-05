@@ -164,7 +164,7 @@ class MaxHeap {
         int left = 2 * i + 1; // current root's left child
         int right = 2 * i + 2; // current root's right child
 
-        // search for minimum value to swap with current root
+        // search for maximum value to swap with current root
         if (left < arr.size() && arr.get(maxIdx) < arr.get(left))
             maxIdx = left;
         if (right < arr.size() && arr.get(maxIdx) < arr.get(right))

@@ -31,7 +31,7 @@ class HeapSort {
         int right = 2 * idx + 2; //right child
         int maxIdx = idx;
 
-            // search for minimum value to swap with current root
+            // search for maximum value to swap with current root
         if(left < size && arr[left] > arr[maxIdx]) maxIdx = left; 
         if(right < size && arr[right] > arr[maxIdx]) maxIdx = right; 
 
