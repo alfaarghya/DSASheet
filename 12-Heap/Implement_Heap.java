@@ -160,24 +160,24 @@ class MaxHeap {
     }
 
     private void heapify(int i) {
-        int minIdx = i;
+        int maxIdx = i;
         int left = 2 * i + 1; // current root's left child
         int right = 2 * i + 2; // current root's right child
 
         // search for minimum value to swap with current root
-        if (left < arr.size() && arr.get(minIdx) < arr.get(left))
-            minIdx = left;
-        if (right < arr.size() && arr.get(minIdx) < arr.get(right))
-            minIdx = right;
+        if (left < arr.size() && arr.get(maxIdx) < arr.get(left))
+            maxIdx = left;
+        if (right < arr.size() && arr.get(maxIdx) < arr.get(right))
+            maxIdx = right;
 
         // fix the heap
-        if (minIdx != i) {
+        if (maxIdx != i) {
             // swap
             int swapVar = arr.get(i);
-            arr.set(i, arr.get(minIdx));
-            arr.set(minIdx, swapVar);
+            arr.set(i, arr.get(maxIdx));
+            arr.set(maxIdx, swapVar);
 
-            heapify(minIdx);
+            heapify(maxIdx);
         }
     }
         /*---- ----*/
