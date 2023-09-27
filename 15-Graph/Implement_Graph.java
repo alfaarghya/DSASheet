@@ -18,11 +18,23 @@ class Edge {
 
 public class Implement_Graph {
 
+    // BFS in graph component
     public static List<Integer> BFS(ArrayList<Edge>[] graph, int V) {
         List<Integer> ans = new ArrayList<>();
+        boolean[] visited = new boolean[V];
+
+        for (int i = 0; i < V; i++) {
+            if (!visited[i]) {
+                BFSutil(graph, visited, ans);
+            }
+        }
+
+        return ans;
+    }
+
+    public static void BFSutil(ArrayList<Edge>[] graph, boolean[] visited, List<Integer> ans) { // TC -> O(V+E)
 
         Queue<Integer> q = new LinkedList<>();
-        boolean[] visited = new boolean[V];
 
         q.add(0); // start from 0
 
@@ -40,11 +52,20 @@ public class Implement_Graph {
             }
         }
 
-        return ans;
-
     }
 
-    public static void DFS(ArrayList<Edge>[] graph, int curr, boolean[] visited, List<Integer> ans) {
+    public static List<Integer> DFS(ArrayList<Edge>[] graph, int V) {
+        List<Integer> ans = new ArrayList<>();
+        boolean[] visited = new boolean[V];
+
+        for (int i = 0; i < V; i++) {
+            DFSutil(graph, i, visited, ans);
+        }
+
+        return ans;
+    }
+
+    public static void DFSutil(ArrayList<Edge>[] graph, int curr, boolean[] visited, List<Integer> ans) {
 
         // visit
         ans.add(curr);
@@ -53,7 +74,7 @@ public class Implement_Graph {
         for (int i = 0; i < graph[curr].size(); i++) {
             Edge e = graph[curr].get(i);
             if (!visited[e.destination]) {
-                DFS(graph, e.destination, visited, ans);
+                DFSutil(graph, e.destination, visited, ans);
             }
         }
     }
@@ -99,9 +120,7 @@ public class Implement_Graph {
 
         System.out.println(BFS(graph, V));
 
-        List<Integer> ans = new ArrayList<>();
-        DFS(graph, 0, new boolean[V], ans);
-        System.err.println(ans);
+        System.err.println(DFS(graph, V));
 
     }
 }
