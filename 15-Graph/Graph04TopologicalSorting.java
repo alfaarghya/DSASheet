@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
+import java.util.Queue;
 
 class Edge {
 
@@ -18,7 +19,7 @@ class Edge {
 
 public class Graph04TopologicalSorting {
 
-    public static List<Integer> topologicalSort(ArrayList<Edge>[] graph) { // TC -> O(V+E)
+    public static List<Integer> topologicalSort_DFS(ArrayList<Edge>[] graph) { // TC -> O(V+E)
         // storing sorting value
         List<Integer> ans = new ArrayList<>();
 
@@ -29,7 +30,7 @@ public class Graph04TopologicalSorting {
         for (int i = 0; i < graph.length; i++) {
             // i'th vertex is not visited....
             if (!visited[i]) {
-                topologicalSortUtil(graph, i, visited, stk); // ...then visit is
+                topologicalSortUtil_DFS(graph, i, visited, stk); // ...then visit is
             }
         }
 
@@ -40,7 +41,37 @@ public class Graph04TopologicalSorting {
         return ans;
     }
 
-    public static void topologicalSortUtil(ArrayList<Edge>[] graph, int idx, boolean[] visited, Stack<Integer> stk) {
+    public static List<Integer> topologicalSort_BFS(ArrayList<Edge>[] graph) { // TC -> O(V+E)
+        List<Integer> ans = new ArrayList<>();
+
+        int[] inDeg = calcInDeg(graph);
+        Queue<Integer> q = new LinkedList<>();
+
+        for (int i = 0; i < inDeg.length; i++) {
+            if (inDeg[i] == 0) {
+                q.add(i);
+            }
+        }
+
+        // BFS
+        while (!q.isEmpty()) {
+            int curr = q.remove();
+            ans.add(curr);
+
+            for (int i = 0; i < graph[curr].size(); i++) {
+                Edge e = graph[curr].get(i);
+                inDeg[e.destination]--;
+                if (inDeg[e.destination] == 0) {
+                    q.add(e.destination);
+                }
+            }
+        }
+
+        return ans;
+    }
+
+    public static void topologicalSortUtil_DFS(ArrayList<Edge>[] graph, int idx, boolean[] visited,
+            Stack<Integer> stk) {
         visited[idx] = true; // we are on current vertex... so we visited it
 
         for (int i = 0; i < graph[idx].size(); i++) {
@@ -48,12 +79,25 @@ public class Graph04TopologicalSorting {
 
             // if we don't visit next vertex of current vertex......
             if (!visited[e.destination]) {
-                topologicalSortUtil(graph, e.destination, visited, stk); // .....then visit it
+                topologicalSortUtil_DFS(graph, e.destination, visited, stk); // .....then visit it
             }
         }
         // ... otherwise push it in stack
         stk.push(idx);
 
+    }
+
+    private static int[] calcInDeg(ArrayList<Edge>[] graph) {
+        int[] inDeg = new int[graph.length];
+
+        for (int i = 0; i < graph.length; i++) {
+            for (int j = 0; j < graph[i].size(); j++) {
+                Edge e = graph[i].get(j);
+                inDeg[e.destination]++;
+            }
+        }
+
+        return inDeg;
     }
 
     private static ArrayList<Edge>[] create1() {
@@ -86,7 +130,8 @@ public class Graph04TopologicalSorting {
 
         ArrayList<Edge>[] graph = create1();
 
-        System.out.println(topologicalSort(graph));
+        System.out.println(topologicalSort_DFS(graph));
+        System.out.println(topologicalSort_BFS(graph));
 
     }
 }
