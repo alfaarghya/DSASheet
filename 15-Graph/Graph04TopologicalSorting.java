@@ -42,11 +42,12 @@ public class Graph04TopologicalSorting {
     }
 
     public static List<Integer> topologicalSort_BFS(ArrayList<Edge>[] graph) { // TC -> O(V+E)
-        List<Integer> ans = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();// output
 
         int[] inDeg = calcInDeg(graph);
         Queue<Integer> q = new LinkedList<>();
 
+        // run a loop to find 0 in-degree vertex
         for (int i = 0; i < inDeg.length; i++) {
             if (inDeg[i] == 0) {
                 q.add(i);
@@ -55,14 +56,16 @@ public class Graph04TopologicalSorting {
 
         // BFS
         while (!q.isEmpty()) {
+            // output-value
             int curr = q.remove();
             ans.add(curr);
 
             for (int i = 0; i < graph[curr].size(); i++) {
                 Edge e = graph[curr].get(i);
-                inDeg[e.destination]--;
+                inDeg[e.destination]--;// reduce in-degree
+                // if in-degree is 0....
                 if (inDeg[e.destination] == 0) {
-                    q.add(e.destination);
+                    q.add(e.destination); // ... then only add
                 }
             }
         }
