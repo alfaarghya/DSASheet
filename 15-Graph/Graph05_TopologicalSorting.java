@@ -17,7 +17,7 @@ class Edge {
     }
 }
 
-public class Graph04TopologicalSorting {
+public class Graph05_TopologicalSorting {
 
     public static List<Integer> topologicalSort_DFS(ArrayList<Edge>[] graph) { // TC -> O(V+E)
         // storing sorting value
