@@ -50,6 +50,7 @@ public class Implement_DijkstraAlgorithm {
         while (!pq.isEmpty()) {
 
             Pair curr = pq.remove();
+
             // only for not visited
             if (!visited[curr.vertex]) {
                 visited[curr.vertex] = true;
