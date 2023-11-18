@@ -1,5 +1,6 @@
 public class DP05_UnboundedKnapsack {
 
+    // TC -> O(n * wt)
     public static int unboundedKnapsackTabulation(int[] v, int[] w, int wt) {
         // 1. initialization
         int[][] dp = new int[v.length + 1][wt + 1];
@@ -35,6 +36,29 @@ public class DP05_UnboundedKnapsack {
         return dp[v.length][wt];
     }
 
+    // TC -> O(n * wt)
+    public static int unboundedKnapsackMemoization(int[] v, int[] w, int wt, int n, int[][] dp) {
+        // base case n == 0 || wt == 0 --> 0
+        if (n == 0 || wt == 0) {
+            return 0;
+        }
+
+        if (dp[n][wt] != -1) {
+            return dp[n][wt];
+        }
+
+        if (w[n - 1] <= wt) {
+            int include = v[n - 1] + unboundedKnapsackMemoization(v, w, wt - w[n - 1], n, dp);
+            int exclude = unboundedKnapsackMemoization(v, w, wt, n - 1, dp);
+            dp[n][wt] = Math.max(include, exclude);
+            return dp[n][wt];
+        } else {
+            dp[n][wt] = unboundedKnapsackMemoization(v, w, wt, n - 1, dp);
+            return dp[n][wt];
+        }
+
+    }
+
     public static void printArray(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[0].length; j++) {
@@ -51,5 +75,15 @@ public class DP05_UnboundedKnapsack {
         int wt = 7;
 
         System.out.println(unboundedKnapsackTabulation(value, weight, wt));
+        System.out.println("-----------------------------------------------------");
+        int[][] dp = new int[value.length + 1][wt + 1];
+        for (int i = 0; i < dp.length; i++) {
+            for (int j = 0; j < dp[0].length; j++) {
+                dp[i][j] = -1;
+            }
+        }
+        System.out.println(unboundedKnapsackMemoization(value, weight, wt, value.length, dp));
+        printArray(dp);
+
     }
 }
