@@ -30,7 +30,7 @@ public class Math01_ReverseInteger {
             x /= 10;
         }
 
-        // answer accptance
+        // answer acceptance
         if (ans < Math.pow(-2, 31) || ans > Math.pow(2, 31)) {
             return 0;
         }
