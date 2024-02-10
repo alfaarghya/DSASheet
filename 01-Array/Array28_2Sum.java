@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 public class Array28_2Sum {
 
-    public static void _2sum(int[] arr, int target) {   //TC->O(n)
+    public static void _2sum(int[] arr, int target) {   //TC->O(nlogn)
         ArrayList<Integer> list =  new ArrayList<>();
 
         Arrays.sort(arr); //Sort the array
@@ -55,6 +55,19 @@ public class Array28_2Sum {
             }
         }
         System.out.println(-1);
+    }
+
+    //return the index
+    public int[] twoSum(int[] nums, int target) { //tc -> O(n^2)
+        for (int i = 0; i < nums.length; i++){
+            for (int j = i+1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+
+        return new int[]{};
     }
 
     public static void main(String[] args) {
