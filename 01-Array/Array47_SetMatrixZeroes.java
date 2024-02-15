@@ -22,7 +22,7 @@ n == matrix[0].length
 
 import java.util.ArrayList;
 
-public class Array48_SetMatrixZeroes {
+public class Array47_SetMatrixZeroes {
 
     public void setZeroes(int[][] matrix) {
        ArrayList<Integer> row = new ArrayList<>(); 
