@@ -1,4 +1,3 @@
 # DSASheet
-I try to solve DSA questions and this repository contains java codes only.
 
-currently I am learning git.
+This repo is collection of Data Structures and Algorithms problems that I've successfully tackled
